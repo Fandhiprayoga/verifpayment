@@ -8,6 +8,9 @@ class Home extends BaseController
     {
         $parser = service('parser');
         $data= array(
+            'nim' => null,
+            'prodi' =>null,
+            'fullname' => null,
             'data' =>[]
         );
         return view('header_view').$parser->setData($data)->render('table_view').view('footer_view');
@@ -57,14 +60,24 @@ class Home extends BaseController
 
             $hispay = $this->_gethistorypayment($resses->accessToken);
             $jsonhispay = json_decode($hispay);
-            // var_dump($jsonhispay);
+            $getlastrow = count($jsonhispay)-1;
+            // var_dump($jsonhispay[$getlastrow]);
             // die();
+            $datasingle = array(
+                $jsonhispay[$getlastrow]
+            );
 
 
+            $datases = json_decode($this->_createses($username));
+            // var_dump($datases);
+            // die();
             $parser = service('parser');
 
-            $data= array(
-                'data' =>$jsonhispay
+            $data = array(
+                'nim' => $datases->identityid,
+                'prodi' =>$datases->prodi,
+                'fullname' => $datases->fullname,
+                'data' => $datasingle
             );
 
             // return $parser->setData($data)->render('welcome_message');
@@ -136,5 +149,25 @@ class Home extends BaseController
         curl_close($curl);
         return $response;
 
+    }
+
+    private function _createses($username=null){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => getenv('API_URL').'?mod=createSession&usid='.$username,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
     }
 }

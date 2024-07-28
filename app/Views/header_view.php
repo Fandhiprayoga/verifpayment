@@ -241,31 +241,37 @@
 <!-- CONTENT -->
 
 <section style="min-height: 90vh;font-size: 12px;">
-<form action="" method="post" style="display:flex;flex-direction:column;gap:10px;margin-bottom: 100px;" id="formlogin">
-<?php if (session()->has('errors')) : ?>
-    <div class="alert alert-danger">
-        <?php foreach (session('errors') as $error) : ?>
-            <?= $error ?>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
 
-    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
-    <div class="form-floating">
-      <input type="text" class="form-control" id="floatingInput" name="username" placeholder="nanajhonson">
-      <label for="floatingInput">Username</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
-    <button 
-        data-sitekey="<?= getenv('recaptcha3.key')?>" 
-        data-callback='onSubmit' 
-        data-action='submit'
-        type="submit" 
-        class="btn btn-success g-recaptcha">Check</button>
-</form>
+<div class="card" style="width: 40rem;margin-bottom: 2.5rem;">
+  <div class="card-body">
+    <form action="" method="post" style="display:flex;flex-direction:column;gap:10px;" id="formlogin">
+    <?php if (session()->has('errors')) : ?>
+        <div class="alert alert-danger">
+            <?php foreach (session('errors') as $error) : ?>
+                <?= $error ?>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    
+        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="nanajhonson">
+          <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button 
+            data-sitekey="<?= getenv('recaptcha3.key')?>" 
+            data-callback='onSubmit' 
+            data-action='submit'
+            type="submit" 
+            class="btn btn-success g-recaptcha">Check</button>
+    </form>
+  </div>
+</div>
+
 
 
 
