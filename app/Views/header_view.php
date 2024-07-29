@@ -215,9 +215,9 @@
     margin-left: 6px;">Payment Check</span>
                 </a>
             </li>
-            <li class="menu-toggle">
+            <!-- <li class="menu-toggle">
                 <button id="menuToggle">&#9776;</button>
-            </li>
+            </li> -->
             <!-- <li class="menu-item hidden"><a href="#">Home</a></li> -->
             <!-- <li class="menu-item hidden"><a href="https://codeigniter.com/user_guide/" target="_blank">Docs</a> -->
             </li>
