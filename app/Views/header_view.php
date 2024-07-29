@@ -242,7 +242,7 @@
 
 <section style="min-height: 90vh;font-size: 12px;">
 
-<div class="card" style="width: 40rem;margin-bottom: 2.5rem;">
+<div class="card" style="max-width: 40rem;margin-bottom: 2.5rem;">
   <div class="card-body">
     <form action="" method="post" style="display:flex;flex-direction:column;gap:10px;" id="formlogin">
     <?php if (session()->has('errors')) : ?>
