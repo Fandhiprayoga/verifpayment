@@ -22,6 +22,7 @@
           <th scope="col">Beasiswa</th>
           <th scope="col">Potongan</th>
           <th scope="col">Tagihan</th>
+          <th scope="col">PDD</th>
           <th scope="col">Total Terbayar</th>
           <th scope="col">Keterangan</th>
         </tr>
@@ -36,6 +37,7 @@
           <td>{BEASISWA}</td>
           <td>{POTONGAN}</td>
           <td>{TOTALTAGIHAN}</td>
+          <td>{PDD}</td>
           <td>{TOTALBAYAR}</td>
           <td>{SETTLEDSTTUS}</td>
         </tr>
